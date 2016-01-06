@@ -1,0 +1,164 @@
+body {
+    background-color: #f1f1f1;
+}
+
+.titulo {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 6em;
+    font-weight: bold;
+    font-family: Helvetica;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+}
+
+.titulo {
+    text-align: center;
+}
+
+#container {
+    float: left;
+    position: relative;
+    width: 640px;
+    height: 500px;
+    margin-top: 15px;
+    margin-left: 10px;
+    border: solid 1px #000;
+    -webkit-box-shadow: 7px 10px 25px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 7px 10px 25px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
+    overflow: hidden;
+}
+
+#hub {
+    float: left;
+    position: relative;
+    width: 300px;
+    height: 500px;
+    margin-top: 15px;
+    margin-left: 10px;
+    border: solid 1px #000;
+    -webkit-box-shadow: 7px 10px 25px 4px rgba(0, 0, 0, 0.56);
+    -moz-box-shadow: 7px 10px 25px 4px rgba(0, 0, 0, 0.56);
+    box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+/* La cocina */
+
+.cocina {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    background-color: lavender;
+    border: solid 1px silver;
+    box-shadow: 0px 3px 5px 1px silver;
+}
+
+
+/* Mesa */
+
+#mesa {
+    position: absolute;
+    top: 210px;
+    left: 100px;
+    width: 34px;
+    height: 34px;
+    background-color: rosybrown;
+    border-radius: 17px;
+    border: solid 1px brown;
+    box-shadow: 0px 3px 5px 1px silver;
+    -webkit-transition: background-color 8s ease-out;
+    -moz-transition: background-color 8s ease-out;
+    -o-transition: background-color 8s ease-out;
+    transition: background-color 8s ease-out;
+}
+
+#mesa.ready {
+    /* mesa lista */
+    background-color: crimson;
+    border: solid 1px red;
+}
+
+#mesa.waiting {
+    /* mesa esperando */
+    background-color: greenyellow;
+    border: solid 1px green;
+    cursor: pointer;
+}
+
+
+/* El camarero */
+
+#camarero {
+    position: absolute;
+    top: 228px;
+    left: 320px;
+    width: 25px;
+    height: 44px;
+    z-index: 1;
+    /* http://www.4shared.com/all-images/MCbAVhKU/Characters.html?&firstFileToShow=300 */
+    /* 136-Bartender01.png */
+    background: url('../img/char.png') no-repeat;
+}
+
+
+/* 66*168  22 - 42 */
+
+
+/* las 12 posicion/vistas del camarero */
+
+#camarero.front-right {
+    background-position: -68px -3px;
+}
+
+#camarero.front-stand {
+    background-position: -35px -3px;
+}
+
+#camarero.front-left {
+    background-position: -3px -3px;
+}
+
+#camarero.left-right {
+    background-position: -68px -50px;
+}
+
+#camarero.left-stand {
+    background-position: -35px -50px;
+}
+
+#camarero.left-left {
+    background-position: -3px -50px;
+}
+
+#camarero.right-right {
+    background-position: -68px -99px;
+}
+
+#camarero.right-stand {
+    background-position: -35px -99px;
+}
+
+#camarero.right-left {
+    background-position: -3px -99px;
+}
+
+#camarero.back-right {
+    background-position: -68px -147px;
+}
+
+#camarero.back-stand {
+    background-position: -35px -147px;
+}
+
+#camarero.back-left {
+    background-position: -3px -147px;
+}
