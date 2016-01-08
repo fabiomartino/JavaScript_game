@@ -1,14 +1,87 @@
-// Variables globales.
+// **************************************************************** //
+//                   M A R T I N O   F A B I O                      //
+// **************************************************************** //
+
+// ---------------------------------------------------------------- //
+// Mensaje personalizado de bienvenida
+console.log('%cBienvenido Fabio!', 'color: blue; font-size: 15px');
+
+// Vatiables global
 var currentKey;
 var charStep = 2; // movimientos 1 = primero paso, 2 = statico, 3 = segundo paso, 4 = statico
-var charPxStep = 24;
+var charPxStep = 5;
 var charSpeed = 500; // velocidad del camarero
 
+// variables
 var restaurant = document.getElementById("container");
 var elCamarero = document.getElementById("camarero");
-var camareroLeft = 320;
-var camareroTop = 228;
 
+// el camarero
+var camarero = {
+    top: 228, // top posicion inicial X
+    left: 320, // left posicion inicial Y
+    width: 25,
+    height: 44
+};
+
+
+// cocina
+var cocina = {
+    top: 1, // top
+    left: 260, // left
+    width: 100,
+    height: 40
+}
+
+// mesa 1
+var mesa1 = {
+    top: 160, // top
+    left: 100, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+//mesa 2
+var mesa2 = {
+    top: 160, // top
+    left: 300, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+// mesa 3
+var mesa3 = {
+    top: 160, // top
+    left: 500, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+// mesa 4
+var mesa4 = {
+    top: 360, // top
+    left: 100, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+// mesa 5
+var mesa5 = {
+    top: 360, // top
+    left: 300, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+// mesa 6
+var mesa6 = {
+    top: 360, // top
+    left: 500, // left
+    width: 34, // +2px borde
+    height: 34
+};
+
+// function de tecla apretada keydown
 document.onkeydown = function (evt) {
     evt = evt || window.event;
 
@@ -16,25 +89,24 @@ document.onkeydown = function (evt) {
         currentKey = evt.keyCode;
         switch (evt.keyCode) {
         case 38:
-            // up arrow
+            // arriba
             moveChar('up');
-            //console.log("Up key is pressed");
-
+            //console.log("tecla UP");
             break;
         case 39:
-            // right arrow
+            // derecha
             moveChar('right');
-            //console.log("Right key is pressed");
+            //console.log("tecla DX");
             break;
         case 40:
-            // down arrow
+            // abajo
             moveChar('down');
-            //console.log("Down key is pressed");
+            //console.log("tecla DOWN");
             break;
         case 37:
-            // left arrow
+            // izquierda
             moveChar('left');
-            //console.log("left key is pressed");
+            //console.log("tecla SX");
             break;
         }
 
@@ -44,6 +116,7 @@ document.onkeydown = function (evt) {
     }
 };
 
+// evento de tecla onkeyup
 document.onkeyup = function (evt) {
     evt = evt || window.event;
     if (evt.keyCode == currentKey) {
@@ -51,12 +124,21 @@ document.onkeyup = function (evt) {
     }
 };
 
+funcion para detectar las colisiones
+
+function colision(obj) {
+    return !(
+        ((camarero.top + camarero.width - 1) < obj.top) ||
+        ((obj.top + obj.width - 1) < camarero.top) ||
+        ((camarero.left + camarero.height - 1) < obj.left) ||
+        ((obj.left + obj.height - 1) < camarero.left));
+}
+
+// funcion para mover el camarero
 function moveChar(dir) {
-    //a player could switch key mid-animation
-    //record the key that was down when animation started
     var currentKeyCheck = currentKey;
 
-    //adjust from lang to code
+    // arreglo.. desde idioma a codigo
     if (dir == 'up') {
         dir = 'back';
     }
@@ -158,40 +240,37 @@ function moveChar(dir) {
     // mueve el camarero
     switch (dir) {
     case 'front':
-        camareroTop += charPxStep;
-        elCamarero.style.top = camareroTop + 'px';
+        camarero.top += charPxStep;
+        elCamarero.style.top = camarero.top + 'px';
         // llego al borde inferior ?
-        if (camareroTop >= 444) {
-            camareroTop -= charPxStep;
+        if ((camarero.top >= 454) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+            camarero.top -= charPxStep;
         }
-
         break;
     case 'back':
-        camareroTop -= charPxStep;
-        elCamarero.style.top = camareroTop + 'px';
+        camarero.top -= charPxStep;
+        elCamarero.style.top = camarero.top + 'px';
         // llego al borde superior ?
-        if (camareroTop <= 12) {
-            camareroTop += charPxStep;
+        if ((camarero.top <= 1) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+            camarero.top += charPxStep;
         }
 
         break;
     case 'left':
-        camareroLeft -= charPxStep;
-        elCamarero.style.left = camareroLeft + 'px';
+        camarero.left -= charPxStep;
+        elCamarero.style.left = camarero.left + 'px';
         // llego al borde izquierdo ?
-        if (camareroLeft <= 8) {
-            camareroLeft += charPxStep;
+        if ((camarero.left <= 3) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+            camarero.left += charPxStep;
         }
-
         break;
     case 'right':
-        camareroLeft += charPxStep;
-        elCamarero.style.left = camareroLeft + 'px';
+        camarero.left += charPxStep;
+        elCamarero.style.left = camarero.left + 'px';
         // llego al borde derecho ?
-        if (camareroLeft >= 608) {
-            camareroLeft -= charPxStep;
+        if ((camarero.left >= 612) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+            camarero.left -= charPxStep;
         }
-
         break;
     }
 }
