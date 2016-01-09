@@ -27,57 +27,57 @@ var camarero = {
 // cocina
 var cocina = {
     top: 1, // top
-    left: 270, // left
-    width: 100,
-    height: 40
+    left: 285, // left
+    width: 38,
+    height: 93
 }
 
 // mesa 1
 var mesa1 = {
     top: 160, // top
     left: 100, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 //mesa 2
 var mesa2 = {
     top: 160, // top
     left: 300, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 // mesa 3
 var mesa3 = {
     top: 160, // top
     left: 500, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 // mesa 4
 var mesa4 = {
     top: 360, // top
     left: 100, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 // mesa 5
 var mesa5 = {
     top: 360, // top
     left: 300, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 // mesa 6
 var mesa6 = {
     top: 360, // top
     left: 500, // left
-    width: 34, // +2px borde
-    height: 34
+    width: 40, // +2px borde
+    height: 40
 };
 
 // function de tecla apretada keydown
@@ -129,7 +129,8 @@ function colision(obj) {
         ((camarero.top + camarero.width - 1) < obj.top) ||
         ((obj.top + obj.width - 1) < camarero.top) ||
         ((camarero.left + camarero.height - 1) < obj.left) ||
-        ((obj.left + obj.height - 1) < camarero.left));
+        ((obj.left + obj.height - 1) < camarero.left)
+        );
 }
 
 // funcion para mover el camarero
