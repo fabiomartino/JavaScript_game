@@ -124,8 +124,7 @@ document.onkeyup = function (evt) {
     }
 };
 
-funcion para detectar las colisiones
-
+//funcion para detectar las colisiones
 function colision(obj) {
     return !(
         ((camarero.top + camarero.width - 1) < obj.top) ||
