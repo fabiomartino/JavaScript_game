@@ -20,15 +20,14 @@ var elCamarero = document.getElementById("camarero");
 var camarero = {
     top: 228, // top posicion inicial X
     left: 320, // left posicion inicial Y
-    width: 25,
-    height: 44
+    width: 24,
+    height: 43
 };
-
 
 // cocina
 var cocina = {
     top: 1, // top
-    left: 260, // left
+    left: 270, // left
     width: 100,
     height: 40
 }
@@ -242,7 +241,7 @@ function moveChar(dir) {
         camarero.top += charPxStep;
         elCamarero.style.top = camarero.top + 'px';
         // llego al borde inferior ?
-        if ((camarero.top >= 454) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.top >= 448) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.top -= charPxStep;
         }
         break;
@@ -250,7 +249,7 @@ function moveChar(dir) {
         camarero.top -= charPxStep;
         elCamarero.style.top = camarero.top + 'px';
         // llego al borde superior ?
-        if ((camarero.top <= 1) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.top <= 3) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.top += charPxStep;
         }
 
@@ -259,7 +258,7 @@ function moveChar(dir) {
         camarero.left -= charPxStep;
         elCamarero.style.left = camarero.left + 'px';
         // llego al borde izquierdo ?
-        if ((camarero.left <= 3) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.left <= 5) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.left += charPxStep;
         }
         break;
@@ -267,7 +266,7 @@ function moveChar(dir) {
         camarero.left += charPxStep;
         elCamarero.style.left = camarero.left + 'px';
         // llego al borde derecho ?
-        if ((camarero.left >= 612) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.left >= 610) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.left -= charPxStep;
         }
         break;
