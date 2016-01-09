@@ -11,6 +11,8 @@ var currentKey;
 var charStep = 2; // movimientos 1 = primero paso, 2 = statico, 3 = segundo paso, 4 = statico
 var charPxStep = 5;
 var charSpeed = 500; // velocidad del camarero
+var mW = 80;
+var mH = 77;
 
 // variables
 var restaurant = document.getElementById("container");
@@ -20,64 +22,64 @@ var elCamarero = document.getElementById("camarero");
 var camarero = {
     top: 228, // top posicion inicial X
     left: 320, // left posicion inicial Y
-    width: 24,
-    height: 43
+    width: 43,
+    height: 24
 };
 
 // cocina
 var cocina = {
     top: 1, // top
     left: 285, // left
-    width: 38,
-    height: 93
+    width: 30,
+    height: 100
 }
 
 // mesa 1
 var mesa1 = {
-    top: 160, // top
+    top: 130, // top
     left: 100, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 //mesa 2
 var mesa2 = {
-    top: 160, // top
+    top: 130, // top
     left: 300, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 // mesa 3
 var mesa3 = {
-    top: 160, // top
+    top: 130, // top
     left: 500, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 // mesa 4
 var mesa4 = {
-    top: 360, // top
+    top: 330, // top
     left: 100, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 // mesa 5
 var mesa5 = {
-    top: 360, // top
+    top: 330, // top
     left: 300, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 // mesa 6
 var mesa6 = {
-    top: 360, // top
+    top: 330, // top
     left: 500, // left
-    width: 40, // +2px borde
-    height: 40
+    width: mW, // +2px borde
+    height: mH
 };
 
 // function de tecla apretada keydown
@@ -130,7 +132,7 @@ function colision(obj) {
         ((obj.top + obj.width - 1) < camarero.top) ||
         ((camarero.left + camarero.height - 1) < obj.left) ||
         ((obj.left + obj.height - 1) < camarero.left)
-        );
+    );
 }
 
 // funcion para mover el camarero
