@@ -26,12 +26,12 @@ var camarero = {
     height: 24
 };
 
-// cocina
-var cocina = {
+// barra
+var barra = {
     top: 1, // top
-    left: 285, // left
-    width: 30,
-    height: 100
+    left: 262, // left
+    width: 37,
+    height: 123
 }
 
 // mesa 1
@@ -45,7 +45,7 @@ var mesa1 = {
 //mesa 2
 var mesa2 = {
     top: 130, // top
-    left: 300, // left
+    left: 285, // left
     width: mW, // +2px borde
     height: mH
 };
@@ -53,7 +53,7 @@ var mesa2 = {
 // mesa 3
 var mesa3 = {
     top: 130, // top
-    left: 500, // left
+    left: 470, // left
     width: mW, // +2px borde
     height: mH
 };
@@ -69,7 +69,7 @@ var mesa4 = {
 // mesa 5
 var mesa5 = {
     top: 330, // top
-    left: 300, // left
+    left: 285, // left
     width: mW, // +2px borde
     height: mH
 };
@@ -77,7 +77,7 @@ var mesa5 = {
 // mesa 6
 var mesa6 = {
     top: 330, // top
-    left: 500, // left
+    left: 470, // left
     width: mW, // +2px borde
     height: mH
 };
@@ -244,7 +244,7 @@ function moveChar(dir) {
         camarero.top += charPxStep;
         elCamarero.style.top = camarero.top + 'px';
         // llego al borde inferior ?
-        if ((camarero.top >= 448) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.top >= 448) || (colision(barra)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.top -= charPxStep;
         }
         break;
@@ -252,7 +252,7 @@ function moveChar(dir) {
         camarero.top -= charPxStep;
         elCamarero.style.top = camarero.top + 'px';
         // llego al borde superior ?
-        if ((camarero.top <= 3) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.top <= 3) || (colision(barra)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.top += charPxStep;
         }
 
@@ -261,7 +261,7 @@ function moveChar(dir) {
         camarero.left -= charPxStep;
         elCamarero.style.left = camarero.left + 'px';
         // llego al borde izquierdo ?
-        if ((camarero.left <= 5) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.left <= 5) || (colision(barra)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.left += charPxStep;
         }
         break;
@@ -269,7 +269,7 @@ function moveChar(dir) {
         camarero.left += charPxStep;
         elCamarero.style.left = camarero.left + 'px';
         // llego al borde derecho ?
-        if ((camarero.left >= 610) || (colision(cocina)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
+        if ((camarero.left >= 610) || (colision(barra)) || (colision(mesa1)) || (colision(mesa2)) || (colision(mesa2)) || (colision(mesa3)) || (colision(mesa4)) || (colision(mesa5)) || (colision(mesa6))) {
             camarero.left -= charPxStep;
         }
         break;
