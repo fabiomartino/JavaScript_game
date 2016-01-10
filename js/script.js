@@ -28,6 +28,7 @@ var camarero = {
 
 // barra
 var barra = {
+    near: false,
     top: 1, // top
     left: 262, // left
     width: 37,
@@ -36,6 +37,7 @@ var barra = {
 
 // mesa 1
 var mesa1 = {
+    near: false,
     top: 130, // top
     left: 100, // left
     width: mW,
@@ -44,6 +46,7 @@ var mesa1 = {
 
 //mesa 2
 var mesa2 = {
+    near: false,
     top: 130, // top
     left: 285, // left
     width: mW,
@@ -52,6 +55,7 @@ var mesa2 = {
 
 // mesa 3
 var mesa3 = {
+    near: false,
     top: 130, // top
     left: 470, // left
     width: mW,
@@ -60,6 +64,7 @@ var mesa3 = {
 
 // mesa 4
 var mesa4 = {
+    near: false,
     top: 330, // top
     left: 100, // left
     width: mW,
@@ -68,6 +73,7 @@ var mesa4 = {
 
 // mesa 5
 var mesa5 = {
+    near: false,
     top: 330, // top
     left: 285, // left
     width: mW,
@@ -76,6 +82,7 @@ var mesa5 = {
 
 // mesa 6
 var mesa6 = {
+    near: false,
     top: 330, // top
     left: 470, // left
     width: mW,
@@ -130,12 +137,23 @@ document.onkeyup = function (evt) {
 
 //funcion para detectar las colisiones
 function colision(obj) {
+    if ((
+            ((camarero.top + camarero.width - 1) < obj.top) ||
+            ((obj.top + obj.width - 1) < camarero.top) ||
+            ((camarero.left + camarero.height - 1) < obj.left) ||
+            ((obj.left + obj.height - 1) < camarero.left))
+       ) {
+        return false;
+    } else {
+        return true;
+    }
+    /*
     return !(
         ((camarero.top + camarero.width - 1) < obj.top) ||
         ((obj.top + obj.width - 1) < camarero.top) ||
         ((camarero.left + camarero.height - 1) < obj.left) ||
         ((obj.left + obj.height - 1) < camarero.left)
-    );
+    );*/
 }
 
 // funcion para mover el camarero
@@ -277,4 +295,14 @@ function moveChar(dir) {
         }
         break;
     }
+}
+
+function mesaNew(numMesa) {
+    /* <div id="mesaX" class="new"><p class="green">X</p> */
+
+    // empty
+    // new
+    // pending
+    // served
+
 }
