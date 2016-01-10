@@ -10,7 +10,7 @@ console.log('%cBienvenido Fabio!', 'color: blue; font-size: 15px');
 var currentKey;
 var charStep = 2; // movimientos 1 = primero paso, 2 = statico, 3 = segundo paso, 4 = statico
 var charPxStep = 5;
-var charSpeed = 500; // velocidad del camarero
+var charSpeed = 250; // velocidad del cambio sprites camarero
 var mW = 80;
 var mH = 77;
 
@@ -37,7 +37,7 @@ var barra = {
 
 // mesa 1
 var mesa1 = {
-    near: false,
+    step: 0,
     top: 130, // top
     left: 100, // left
     width: mW,
@@ -46,7 +46,7 @@ var mesa1 = {
 
 //mesa 2
 var mesa2 = {
-    near: false,
+    step: 0,
     top: 130, // top
     left: 285, // left
     width: mW,
@@ -55,7 +55,7 @@ var mesa2 = {
 
 // mesa 3
 var mesa3 = {
-    near: false,
+    step: 0,
     top: 130, // top
     left: 470, // left
     width: mW,
@@ -64,7 +64,7 @@ var mesa3 = {
 
 // mesa 4
 var mesa4 = {
-    near: false,
+    step: 0,
     top: 330, // top
     left: 100, // left
     width: mW,
@@ -73,7 +73,7 @@ var mesa4 = {
 
 // mesa 5
 var mesa5 = {
-    near: false,
+    step: 0,
     top: 330, // top
     left: 285, // left
     width: mW,
@@ -82,12 +82,19 @@ var mesa5 = {
 
 // mesa 6
 var mesa6 = {
-    near: false,
+    step: 0,
     top: 330, // top
     left: 470, // left
     width: mW,
     height: mH
 };
+
+
+setInterval(function () {
+    random = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
+    //    console.log(random);
+
+}, 5000);
 
 // function de tecla apretada keydown
 document.onkeydown = function (evt) {
@@ -119,6 +126,64 @@ document.onkeydown = function (evt) {
             moveChar('left');
             //console.log("tecla SX");
             break;
+        case 49:
+            // 1
+            //console.log("tecla 1");
+            if (mesa1.step < 7) {
+                mesa1.step++;
+            } else {
+                mesa1.step = 0;
+            }
+            changeTable('mesa1', mesa1.step);
+            break;
+        case 50:
+            // 2
+            //console.log("tecla 2");
+            if (mesa2.step < 7) {
+                mesa2.step++;
+            } else {
+                mesa2.step = 0;
+            }
+            changeTable('mesa2', mesa2.step);
+            break;
+        case 51:
+            // 3
+            //console.log("tecla 3");
+            if (mesa3.step < 7) {
+                mesa3.step++;
+            } else {
+                mesa3.step = 0;
+            }
+            changeTable('mesa3', mesa3.step);
+            break;
+        case 52: // 4
+            //console.log("tecla 4");
+            if (mesa4.step < 7) {
+                mesa4.step++;
+            } else {
+                mesa4.step = 0;
+            }
+            changeTable('mesa4', mesa4.step);
+            break;
+        case 53: // 5
+            //console.log("tecla 5");
+            if (mesa5.step < 7) {
+                mesa5.step++;
+            } else {
+                mesa5.step = 0;
+            }
+            changeTable('mesa5', mesa5.step);
+            break;
+        case 54: // 6
+            //console.log("tecla 6");
+            if (mesa6.step < 7) {
+                mesa6.step++;
+            } else {
+                mesa6.step = 0;
+            }
+            changeTable('mesa6', mesa6.step);
+            break;
+
         }
 
     }
@@ -141,19 +206,11 @@ function colision(obj) {
             ((camarero.top + camarero.width - 1) < obj.top) ||
             ((obj.top + obj.width - 1) < camarero.top) ||
             ((camarero.left + camarero.height - 1) < obj.left) ||
-            ((obj.left + obj.height - 1) < camarero.left))
-       ) {
+            ((obj.left + obj.height - 1) < camarero.left))) {
         return false;
     } else {
         return true;
     }
-    /*
-    return !(
-        ((camarero.top + camarero.width - 1) < obj.top) ||
-        ((obj.top + obj.width - 1) < camarero.top) ||
-        ((camarero.left + camarero.height - 1) < obj.left) ||
-        ((obj.left + obj.height - 1) < camarero.left)
-    );*/
 }
 
 // funcion para mover el camarero
@@ -297,9 +354,44 @@ function moveChar(dir) {
     }
 }
 
-function mesaNew(numMesa) {
+function changeTable(mesa, value) {
     /* <div id="mesaX" class="new"><p class="green">X</p> */
+    var table = document.getElementById(mesa);
+    //    console.log(table.id);
+    var numeroMesa = document.getElementById(mesa).getElementsByTagName('P')[0];
+    //    console.log(numeroMesa.innerHTML);
+    switch (value) {
+    case 1:
+        table.className = "new";
+        numeroMesa.className = "green";
+        break;
+    case 2:
+        numeroMesa.className = "yellow";
+        break;
+    case 3:
+        numeroMesa.className = "red";
+        break;
+    case 4:
+        table.className = "pending";
+        numeroMesa.className = "green";
+        break;
+    case 5:
+        numeroMesa.className = "yellow";
+        break;
+    case 6:
+        numeroMesa.className = "red";
+        break;
+    case 7:
+        table.className = "served";
+        numeroMesa.className = "green";
+        break;
+    case 0:
+    default:
+        table.className = "empty";
+        numeroMesa.className = "";
+        break;
 
+    }
     // empty
     // new
     // pending
