@@ -15,7 +15,7 @@ body {
     margin-left: 10px;
     margin-right: 10px;
     color: #346e7c;
-    font-size: 6em;
+    font-size: 4em;
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
 }
 
@@ -120,9 +120,6 @@ body {
 }
 
 
-/* 66*168  22 - 42 */
-
-
 /* las 12 posicion/vistas del camarero */
 
 #camarero.front-right {
@@ -174,7 +171,7 @@ body {
 }
 
 
-/* Mesa */
+/* Mesas */
 
 #mesa1 {
     position: absolute;
@@ -229,7 +226,7 @@ body {
 .new {
     width: 80px;
     height: 77px;
-    background-image: url(../img/full.png);
+    background-image: url(../img/new.png);
 }
 
 .new p {
@@ -238,18 +235,45 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* <div id="mesaX" class="new"><p class="green">X</p> */
+
+.new p.green {
+    animation-duration: 1500ms;
+    animation-name: blink-green;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation: blink-green 1000ms infinite;
+}
+
+
+/* <div id="mesaX" class="new"><p class="yellow">X</p> */
+
+.new p.yellow {
+    animation-duration: 1500ms;
+    animation-name: blink-yellow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation: blink-yellow 750ms infinite;
+}
+
+
+/* <div id="mesaX" class="new"><p class="red">X</p> */
+
+.new p.red {
     animation-duration: 1500ms;
     animation-name: blink-red;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     -webkit-animation: blink-red 500ms infinite;
-    /* Safari and Chrome */
 }
 
 .pending {
     width: 80px;
     height: 77px;
-    background-image: url(../img/full.png);
+    background-image: url(../img/pending.png);
 }
 
 .pending p {
@@ -258,11 +282,39 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* <div id="mesaX" class="pending"><p class="green">X</p> */
+
+.pending p.green {
+    animation-duration: 1500ms;
+    animation-name: blink-green;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation: blink-green 1000ms infinite;
+}
+
+
+/* <div id="mesaX" class="pending"><p class="yellow">X</p> */
+
+.pending p.yellow {
     animation-duration: 1500ms;
     animation-name: blink-yellow;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    -webkit-animation: blink-yellow 500ms infinite;
+    -webkit-animation: blink-yellow 750ms infinite;
+}
+
+
+/* <div id="mesaX" class="pending"><p class="red">X</p> */
+
+.pending p.red {
+    animation-duration: 1500ms;
+    animation-name: blink-red;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    -webkit-animation: blink-red 500ms infinite;
     /* Safari and Chrome */
 }
 
@@ -271,6 +323,9 @@ body {
     height: 77px;
     background-image: url(../img/served.png);
 }
+
+
+/* <div id="mesaX" class="served"><p>X</p> */
 
 .served p {
     font-size: 1.4em;
@@ -284,7 +339,6 @@ body {
     animation-iteration-count: infinite;
     animation-direction: alternate;
     -webkit-animation: blink-green 2000ms infinite;
-    /* Safari and Chrome */
 }
 
 @keyframes blink-green {

@@ -38,7 +38,7 @@ var barra = {
 var mesa1 = {
     top: 130, // top
     left: 100, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -46,7 +46,7 @@ var mesa1 = {
 var mesa2 = {
     top: 130, // top
     left: 285, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -54,7 +54,7 @@ var mesa2 = {
 var mesa3 = {
     top: 130, // top
     left: 470, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -62,7 +62,7 @@ var mesa3 = {
 var mesa4 = {
     top: 330, // top
     left: 100, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -70,7 +70,7 @@ var mesa4 = {
 var mesa5 = {
     top: 330, // top
     left: 285, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -78,7 +78,7 @@ var mesa5 = {
 var mesa6 = {
     top: 330, // top
     left: 470, // left
-    width: mW, // +2px borde
+    width: mW,
     height: mH
 };
 
@@ -89,6 +89,9 @@ document.onkeydown = function (evt) {
     if (!currentKey) {
         currentKey = evt.keyCode;
         switch (evt.keyCode) {
+        case 32:
+            //console.log("tecla SPACE");
+            break;
         case 38:
             // arriba
             moveChar('up');
