@@ -89,7 +89,8 @@ var mesa6 = {
     height: mH
 };
 
-
+// para lanzar un evento cada 5 segundos (numero de mesa)
+// incluye el zero para dar "descanso" al jugador
 setInterval(function () {
     random = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
     //    console.log(random);
