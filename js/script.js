@@ -14,6 +14,21 @@ var charSpeed = 250; // velocidad del cambio sprites camarero
 var mW = 80;
 var mH = 77;
 
+// constanes
+var MAX = 5;
+var MIN = 3;
+
+// array status mesas el primero no se usa... de momento.
+var status = [
+    false, // barra?
+    false, // mesa1
+    false, // mesa2
+    false, // mesa3
+    false, // mesa4
+    false, // mesa5
+    false // mesa6
+];
+
 // variables
 var restaurant = document.getElementById("container");
 var elCamarero = document.getElementById("camarero");
@@ -89,13 +104,54 @@ var mesa6 = {
     height: mH
 };
 
-// para lanzar un evento cada 5 segundos (numero de mesa)
-// incluye el zero para dar "descanso" al jugador
-setInterval(function () {
-    random = Math.floor(Math.random() * (6 - 0 + 1)) + 0;
-    //    console.log(random);
+/* ============================================ */
+// Countdown
 
-}, 5000);
+var endTime = new Date();
+// se añade 1 minuto al tiempo actual
+endTime.setMinutes(endTime.getMinutes() + 1);
+var timer;
+
+function showRemaining() {
+    var nowTime = new Date();
+    var distance = endTime - nowTime;
+    var countdownElement = document.getElementById('tiempo');
+    if (distance < 0) {
+        // Tiempo terminado
+        clearInterval(timer); // para el timpo nel countdown
+        countdownElement.innerHTML = '00:00:000';
+        alert('Tiempo terminado');
+    } else {
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var milliseconds = distance % 1000;
+        countdownElement.innerHTML = addZero(minutes) + ':' + addZero(seconds) + ':' + milliseconds;
+    }
+}
+
+timer = setInterval(showRemaining, 10);
+
+/* ============================================ */
+
+var mesaNueva;
+
+// funcion para inicializar nueva mesas
+function newTable() {
+    // crea un numero aleatorio entre 0 y 6 (7 en total)
+    // incluye el zero para dar "descanso" al jugador
+    var random = Math.floor(Math.random() * 7);
+    console.log(status);
+    if (status[random] == false) {
+        status[random] = true;
+        console.log(random);
+    } else {
+        console.log(random);
+    }
+}
+// para lanzar un evento entre 3 y 5 segundos
+mesaNueva = setInterval(newTable, (Math.floor(Math.random() * (MAX - MIN + 1)) + MIN) * 1000);
+
+/* ============================================ */
 
 // function de tecla apretada keydown
 document.onkeydown = function (evt) {
@@ -193,6 +249,7 @@ document.onkeydown = function (evt) {
     }
 };
 
+/* ============================================ */
 // evento de tecla onkeyup
 document.onkeyup = function (evt) {
     evt = evt || window.event;
@@ -200,6 +257,8 @@ document.onkeyup = function (evt) {
         currentKey = false;
     }
 };
+
+/* ============================================ */
 
 //funcion para detectar las colisiones
 function colision(obj) {
@@ -213,6 +272,8 @@ function colision(obj) {
         return true;
     }
 }
+
+/* ============================================ */
 
 // funcion para mover el camarero
 function moveChar(dir) {
@@ -355,6 +416,8 @@ function moveChar(dir) {
     }
 }
 
+/* ============================================ */
+
 function changeTable(mesa, value) {
     /* <div id="mesaX" class="new"><p class="green">X</p> */
     var table = document.getElementById(mesa);
@@ -362,6 +425,7 @@ function changeTable(mesa, value) {
     var numeroMesa = document.getElementById(mesa).getElementsByTagName('P')[0];
     //    console.log(numeroMesa.innerHTML);
     switch (value) {
+        /* --------------------------------------- */
     case 1:
         table.className = "new";
         numeroMesa.className = "green";
@@ -372,6 +436,7 @@ function changeTable(mesa, value) {
     case 3:
         numeroMesa.className = "red";
         break;
+        /* --------------------------------------- */
     case 4:
         table.className = "pending";
         numeroMesa.className = "green";
@@ -386,6 +451,7 @@ function changeTable(mesa, value) {
         table.className = "served";
         numeroMesa.className = "green";
         break;
+        /* --------------------------------------- */
     case 0:
     default:
         table.className = "empty";
@@ -399,3 +465,15 @@ function changeTable(mesa, value) {
     // served
 
 }
+
+/* ============================================ */
+
+// Añade el 0 delante de los minutos en una pareja de numero si el decimal no existe
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
+/* ============================================ */
