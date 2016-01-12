@@ -19,14 +19,20 @@ var MAX = 5;
 var MIN = 3;
 
 // array status mesas el primero no se usa... de momento.
-var status = [
-    false, // barra?
-    false, // mesa1
-    false, // mesa2
-    false, // mesa3
-    false, // mesa4
-    false, // mesa5
-    false // mesa6
+/*
+var status = new Array(7);
+for (var i = 0; i <= status.length; i++) {
+    status[i] = 0;
+}*/
+
+var estado = [
+    0, // barra?
+    0, // mesa1
+    0, // mesa2
+    0, // mesa3
+    0, // mesa4
+    0, // mesa5
+    0 // mesa6
 ];
 
 // variables
@@ -119,6 +125,7 @@ function showRemaining() {
     if (distance < 0) {
         // Tiempo terminado
         clearInterval(timer); // para el timpo nel countdown
+        clearInterval(mesaNueva); // para el timpo en mesaNueva
         countdownElement.innerHTML = '00:00:000';
         alert('Tiempo terminado');
     } else {
@@ -140,12 +147,15 @@ function newTable() {
     // crea un numero aleatorio entre 0 y 6 (7 en total)
     // incluye el zero para dar "descanso" al jugador
     var random = Math.floor(Math.random() * 7);
-    console.log(status);
-    if (status[random] == false) {
-        status[random] = true;
-        console.log(random);
+    //console.log(estado);
+    //console.log(random);
+    if (estado[random] == 0) {
+        //(!status[random]) {
+        estado[random] = 1;
+        //console.log('Modificado... se supone... ojala!');
+        //console.log(estado);
     } else {
-        console.log(random);
+        //console.log('No modificado.');
     }
 }
 // para lanzar un evento entre 3 y 5 segundos
@@ -183,8 +193,10 @@ document.onkeydown = function (evt) {
             moveChar('left');
             //console.log("tecla SX");
             break;
-        case 49:
-            // 1
+
+            /* ---------------------------------------------------- */
+            // DEBUG
+        case 49: // 1
             //console.log("tecla 1");
             if (mesa1.step < 7) {
                 mesa1.step++;
@@ -193,8 +205,7 @@ document.onkeydown = function (evt) {
             }
             changeTable('mesa1', mesa1.step);
             break;
-        case 50:
-            // 2
+        case 50: // 2
             //console.log("tecla 2");
             if (mesa2.step < 7) {
                 mesa2.step++;
@@ -203,8 +214,7 @@ document.onkeydown = function (evt) {
             }
             changeTable('mesa2', mesa2.step);
             break;
-        case 51:
-            // 3
+        case 51: // 3
             //console.log("tecla 3");
             if (mesa3.step < 7) {
                 mesa3.step++;
@@ -240,9 +250,7 @@ document.onkeydown = function (evt) {
             }
             changeTable('mesa6', mesa6.step);
             break;
-
         }
-
     }
     if (evt.keyCode == currentKey) {
         currentKey = false;
