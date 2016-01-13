@@ -15,17 +15,11 @@ var mW = 80;
 var mH = 77;
 
 // constanes
-var MAX = 5;
-var MIN = 3;
+var MAX = 4;
+var MIN = 2;
 
 // array status mesas el primero no se usa... de momento.
-/*
-var status = new Array(7);
-for (var i = 0; i <= status.length; i++) {
-    status[i] = 0;
-}*/
-
-var estado = [
+var estado1 = [
     0, // barra?
     0, // mesa1
     0, // mesa2
@@ -110,6 +104,20 @@ var mesa6 = {
     height: mH
 };
 
+// timer para cada mesa
+var tMesa1;
+var tMesa2;
+var tMesa3;
+var tMesa4;
+var tMesa5;
+var tMesa6;
+
+// timpo de cada fase
+var timerFASE1 = 3000;
+var timerFASE2 = 2500;
+var timerFASE3 = 2000;
+var timerSECONDS = 3050;
+
 /* ============================================ */
 // Countdown
 
@@ -124,8 +132,7 @@ function showRemaining() {
     var countdownElement = document.getElementById('tiempo');
     if (distance < 0) {
         // Tiempo terminado
-        clearInterval(timer); // para el timpo nel countdown
-        clearInterval(mesaNueva); // para el timpo en mesaNueva
+        clearAllTimer(); // para el tiempo para todos los timer
         countdownElement.innerHTML = '00:00:000';
         alert('Tiempo terminado');
     } else {
@@ -140,6 +147,19 @@ timer = setInterval(showRemaining, 10);
 
 /* ============================================ */
 
+function clearAllTimer() {
+    clearInterval(timer); // para el timpo nel countdown
+    clearInterval(mesaNueva); // para el tiempo en mesaNueva
+    clearInterval(tMesa1);
+    clearInterval(tMesa2);
+    clearInterval(tMesa3);
+    clearInterval(tMesa4);
+    clearInterval(tMesa5);
+    clearInterval(tMesa6);
+}
+
+/* ============================================ */
+
 var mesaNueva;
 
 // funcion para inicializar nueva mesas
@@ -147,19 +167,200 @@ function newTable() {
     // crea un numero aleatorio entre 0 y 6 (7 en total)
     // incluye el zero para dar "descanso" al jugador
     var random = Math.floor(Math.random() * 7);
-    //console.log(estado);
+    //console.log(estado1);
     //console.log(random);
-    if (estado[random] == 0) {
+    if (estado1[random] == 0) {
         //(!status[random]) {
-        estado[random] = 1;
+        if (!random == 0) {
+            // se altera el volor del array solo para las posicciones que no sea 0
+            estado1[random] = 1;
+        }
+        // llama la funcion faseUno para su inicializaccion de la mesa recien llegada
+        faseUno(random);
+
         //console.log('Modificado... se supone... ojala!');
-        //console.log(estado);
-    } else {
+        //console.log(estado1);
+        //} else {
         //console.log('No modificado.');
     }
 }
 // para lanzar un evento entre 3 y 5 segundos
 mesaNueva = setInterval(newTable, (Math.floor(Math.random() * (MAX - MIN + 1)) + MIN) * 1000);
+
+/* ============================================ */
+//funcion para inicializar la primera fase de la mesa "llegada/new"
+function faseUno(numTableArrived) {
+    if (!numTableArrived == 0) {
+        var table = document.getElementById('mesa' + numTableArrived);
+        //    console.log(table.id);
+        var numeroMesa = document.getElementById('mesa' + numTableArrived).getElementsByTagName('P')[0];
+        //    console.log(numeroMesa.innerHTML);
+        var parrafoMesa = document.getElementById('hMesa' + numTableArrived);
+    }
+    // ---------------------------------------
+
+    switch (numTableArrived) {
+    case 1:
+        table.className = "new";
+        numeroMesa.className = "green";
+        console.log("Mesa 1");
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        tMesa1 = setInterval(function () {
+            if (mesa1.step < 3) {
+                mesa1.step++;
+            } else {
+                clearInterval(tMesa1);
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+                mesa1.step = 0;
+                estado1[1] = 0;
+
+                setTimeout(function () {
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+
+                }, timerSECONDS);
+            }
+            changeTable('mesa1', mesa1.step, 1);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 2:
+        table.className = "new";
+        numeroMesa.className = "green";
+        console.log("Mesa 2");
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        tMesa2 = setInterval(function () {
+            if (mesa2.step < 3) {
+                mesa2.step++;
+            } else {
+                clearInterval(tMesa2);
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+
+                mesa2.step = 0;
+                estado1[2] = 0;
+                setTimeout(function () {
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+
+                }, timerSECONDS);
+            }
+            changeTable('mesa2', mesa2.step, 2);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 3:
+        table.className = "new";
+        numeroMesa.className = "green";
+        console.log("Mesa 3");
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        tMesa3 = setInterval(function () {
+            if (mesa3.step < 3) {
+                mesa3.step++;
+            } else {
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+                mesa3.step = 0;
+                estado1[3] = 0;
+                setTimeout(function () {
+
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+                }, timerSECONDS);
+            }
+            changeTable('mesa3', mesa3.step, 3);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 4:
+        table.className = "new";
+        numeroMesa.className = "green";
+        console.log("Mesa 4");
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        tMesa4 = setInterval(function () {
+            if (mesa4.step < 3) {
+                mesa4.step++;
+            } else {
+                clearInterval(tMesa4);
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+
+                mesa4.step = 0;
+                estado1[4] = 0;
+                setTimeout(function () {
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+
+                }, timerSECONDS);
+            }
+            changeTable('mesa4', mesa4.step, 4);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 5:
+        table.className = "new";
+        numeroMesa.className = "green";
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        console.log("Mesa 5");
+        tMesa5 = setInterval(function () {
+            if (mesa5.step < 3) {
+                mesa5.step++;
+            } else {
+                clearInterval(tMesa5);
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+                mesa5.step = 0;
+                estado1[5] = 0;
+                setTimeout(function () {
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+
+
+                }, timerSECONDS);
+            }
+            changeTable('mesa5', mesa5.step, 5);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 6:
+        table.className = "new";
+        numeroMesa.className = "green";
+        console.log("Mesa 6");
+        parrafoMesa.innerHTML = "Acaba de llegar...";
+        parrafoMesa.className = "green";
+        tMesa6 = setInterval(function () {
+            if (mesa6.step < 3) {
+                mesa6.step++;
+            } else {
+                clearInterval(tMesa6);
+                parrafoMesa.innerHTML = "La mesa se fue...";
+                parrafoMesa.className = "red";
+
+                mesa6.step = 0;
+                estado1[6] = 0;
+                setTimeout(function () {
+                    parrafoMesa.innerHTML = "...";
+                    parrafoMesa.className = "";
+
+                }, timerSECONDS);
+            }
+            changeTable('mesa6', mesa6.step, 6);
+        }, (Math.floor(Math.random() * (MAX - 3 + 1)) + 3) * 1000);
+        //clearInterval(tMesa1); // para el tiempo nel countdown
+        break;
+    case 0:
+    default:
+        // en el generador de evento salió 0 ... se notifica
+        console.log("Un evento se ha producido... es decir... ningun cliente ha entrado...");
+        break;
+    }
+}
 
 /* ============================================ */
 
@@ -171,6 +372,42 @@ document.onkeydown = function (evt) {
         currentKey = evt.keyCode;
         switch (evt.keyCode) {
         case 32:
+            if (eventoSpace(mesa1)) {
+                console.log("Cerca de mesa 1...");
+            } else {
+                //console.log("no está cerca de mesa 1")
+            }
+            if (eventoSpace(mesa2)) {
+                console.log("Cerca de mesa 2...");
+            } else {
+                //console.log("no está cerca de mesa 3")
+            }
+            if (eventoSpace(mesa3)) {
+                console.log("Cerca de mesa 3...");
+            } else {
+                //console.log("no está cerca de mesa 3")
+            }
+            if (eventoSpace(mesa4)) {
+                console.log("Cerca de mesa 4...");
+            } else {
+                //console.log("no está cerca de mesa 4")
+            }
+            if (eventoSpace(mesa5)) {
+                console.log("Cerca de mesa 5...");
+            } else {
+                //console.log("no está cerca de mesa 5")
+            }
+            if (eventoSpace(mesa6)) {
+                console.log("Cerca de mesa 6...");
+            } else {
+                //console.log("no está cerca de mesa 6")
+            }
+            if (eventoSpace(barra)) {
+                console.log("Cerca de la barra...");
+            } else {
+                //console.log("no está cerca de la barra")
+            }
+
             //console.log("tecla SPACE");
             break;
         case 38:
@@ -196,6 +433,7 @@ document.onkeydown = function (evt) {
 
             /* ---------------------------------------------------- */
             // DEBUG
+            /*    
         case 49: // 1
             //console.log("tecla 1");
             if (mesa1.step < 7) {
@@ -250,6 +488,7 @@ document.onkeydown = function (evt) {
             }
             changeTable('mesa6', mesa6.step);
             break;
+            */
         }
     }
     if (evt.keyCode == currentKey) {
@@ -282,7 +521,20 @@ function colision(obj) {
 }
 
 /* ============================================ */
+//funcion para detectar las proximidad a las mesas al teclear SPACE
+function eventoSpace(obj) {
+    if ((
+            ((camarero.top + camarero.width + 5) < obj.top) ||
+            ((obj.top + obj.width + 5) < camarero.top) ||
+            ((camarero.left + camarero.height + 5) < obj.left) ||
+            ((obj.left + obj.height + 5) < camarero.left))) {
+        return false;
+    } else {
+        return true;
+    }
+}
 
+/* ============================================ */
 // funcion para mover el camarero
 function moveChar(dir) {
     var currentKeyCheck = currentKey;
@@ -426,22 +678,30 @@ function moveChar(dir) {
 
 /* ============================================ */
 
-function changeTable(mesa, value) {
+function changeTable(mesa, value, value2) {
     /* <div id="mesaX" class="new"><p class="green">X</p> */
     var table = document.getElementById(mesa);
     //    console.log(table.id);
     var numeroMesa = document.getElementById(mesa).getElementsByTagName('P')[0];
     //    console.log(numeroMesa.innerHTML);
+    var parrafoMesa = document.getElementById('hMesa' + value2);
+    console.log();
+    //hMesa1
     switch (value) {
         /* --------------------------------------- */
     case 1:
-        table.className = "new";
-        numeroMesa.className = "green";
+        // Supuestamente esto no va a pasar... ya ocurre en la funcion llamante
+        //        table.className = "new";
+        //        numeroMesa.className = "green";
         break;
     case 2:
+        parrafoMesa.innerHTML = "La mesa " + value2 + " está esperando...";
+        parrafoMesa.className = "yellow";
         numeroMesa.className = "yellow";
         break;
     case 3:
+        parrafoMesa.innerHTML = "La mesa " + value2 + " lleva tiempo esperando...";
+        parrafoMesa.className = "red";
         numeroMesa.className = "red";
         break;
         /* --------------------------------------- */

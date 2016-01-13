@@ -292,7 +292,8 @@ body {
 
 /* <div id="mesaX" class="pending"><p class="green">X</p> */
 
-.pending p.green {
+.pending p.green,
+span.green {
     animation-duration: 1500ms;
     animation-name: blink-green;
     animation-iteration-count: infinite;
@@ -303,7 +304,8 @@ body {
 
 /* <div id="mesaX" class="pending"><p class="yellow">X</p> */
 
-.pending p.yellow {
+.pending p.yellow,
+span.yellow {
     animation-duration: 1500ms;
     animation-name: blink-yellow;
     animation-iteration-count: infinite;
@@ -314,7 +316,8 @@ body {
 
 /* <div id="mesaX" class="pending"><p class="red">X</p> */
 
-.pending p.red {
+.pending p.red,
+span.red {
     animation-duration: 1500ms;
     animation-name: blink-red;
     animation-iteration-count: infinite;
