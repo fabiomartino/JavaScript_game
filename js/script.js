@@ -32,6 +32,8 @@ var estado1 = [
 // variables
 var restaurant = document.getElementById("container");
 var elCamarero = document.getElementById("camarero");
+var notaCamarero = document.getElementById("notaSteward");
+var informacion = document.getElementById('info');
 
 // el camarero
 var camarero = {
@@ -49,7 +51,7 @@ var barra = {
     left: 262, // left
     width: 37,
     height: 123,
-    pedido: 0
+    pedido: [] // array con orden de entrada...
 }
 
 // mesa 1
@@ -219,19 +221,19 @@ function faseUno(numTableArrived) {
         parrafoMesa.innerHTML = "Acaba de llegar...";
         parrafoMesa.className = "green";
         mesa1.money = 5;
-        console.log(mesa1.money);
+        //console.log(mesa1.money);
         tMesa1 = setInterval(function () {
             if (mesa1.step < 3) {
                 mesa1.money -= 1;
                 mesa1.step++;
-                console.log(mesa1.money);
+                //console.log(mesa1.money);
             } else {
                 parrafoMesa.innerHTML = "La mesa se fue...";
                 parrafoMesa.className = "red";
                 mesa1.step = 0;
                 estado1[1] = 0;
                 mesa1.money = 0;
-                console.log(mesa1.money);
+                //console.log(mesa1.money);
                 setTimeout(function () {
                     parrafoMesa.innerHTML = "...";
                     parrafoMesa.className = "";
@@ -394,14 +396,25 @@ document.onkeydown = function (evt) {
     if (!currentKey) {
         currentKey = evt.keyCode;
         switch (evt.keyCode) {
-        case 32:
+        case 32: // tecla SPACE
+            //informacion.innerHTML = barra.pedido;
+
+            // remueve eventuales 0 que pueden haberse añadido al array
+            var index = barra.pedido.indexOf(0);
+            if (index > -1) {
+                barra.pedido.splice(index, 1);
+            }
+
             if (estado1[1] == 1) {
                 if (eventoSpace(mesa1)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(1)) {
                         clearInterval(tMesa1);
                         camarero.comanda = 1;
                         camarero.bebida = 0;
-                        console.log("Se ha tomado comanda a la mesa 1...");
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
+                        //console.log("Se ha tomado comanda a la mesa 1...");
+                        mesa1.step = 4;
                         changeTable('mesa1', 4, 1);
                     } else if (camarero.bebida == 1 && camarero.comanda == 0) {
                         clearInterval(tMesa1);
@@ -414,27 +427,37 @@ document.onkeydown = function (evt) {
             } // end estado1[1]
             if (estado1[2] == 1) {
                 if (eventoSpace(mesa2)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(2)) {
                         clearInterval(tMesa2);
                         camarero.comanda = 2;
                         camarero.bebida = 0;
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
                         console.log("Se ha tomado comanda a la mesa 2...");
+                        mesa2.step = 4;
                         changeTable('mesa2', 4, 2);
                     } else if (camarero.bebida == 2 && camarero.comanda == 0) {
-                        clearInterval(tMesa2);
+                        //clearInterval(tMesa2);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
+                        mesa2.step = 7;
+                        changeTable('mesa2', 7, 2);
                         console.log("Se ha servido la bebida a la mesa 2...");
                     }
                 }
             } // end estado1[2]
             if (estado1[3] == 1) {
                 if (eventoSpace(mesa3)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(3)) {
                         clearInterval(tMesa3);
                         camarero.comanda = 3;
                         camarero.bebida = 0;
-                        console.log("Se ha tomado comanda a la mesa 3...");
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
+                        //console.log("Se ha tomado comanda a la mesa 3...");
+                        mesa3.step = 4;
                         changeTable('mesa3', 4, 3);
                     } else if (camarero.bebida == 3 && camarero.comanda == 0) {
                         clearInterval(tMesa3);
@@ -446,11 +469,14 @@ document.onkeydown = function (evt) {
             } // end estado1[3]
             if (estado1[4] == 1) {
                 if (eventoSpace(mesa4)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(4)) {
                         clearInterval(tMesa4);
                         camarero.comanda = 4;
                         camarero.bebida = 0;
-                        console.log("Se ha tomado comanda a la mesa 4...");
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
+                        //console.log("Se ha tomado comanda a la mesa 4...");
+                        mesa4.step = 4;
                         changeTable('mesa4', 4, 4);
                     } else if (camarero.bebida == 4 && camarero.comanda == 0) {
                         clearInterval(tMesa4);
@@ -462,11 +488,14 @@ document.onkeydown = function (evt) {
             } // end estado1[4]
             if (estado1[5] == 1) {
                 if (eventoSpace(mesa5)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(5)) {
                         clearInterval(tMesa5);
                         camarero.comanda = 5;
                         camarero.bebida = 0;
-                        console.log("Se ha tomado comanda a la mesa 5...");
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
+                        //console.log("Se ha tomado comanda a la mesa 5...");
+                        mesa5.step = 4;
                         changeTable('mesa5', 4, 5);
                     } else if (camarero.bebida == 5 && camarero.comanda == 0) {
                         clearInterval(tMesa5);
@@ -478,11 +507,14 @@ document.onkeydown = function (evt) {
             } // end estado1[5]
             if (estado1[6] == 1) {
                 if (eventoSpace(mesa6)) {
-                    if (camarero.bebida == 0 && camarero.comanda == 0) {
+                    if (camarero.bebida == 0 && camarero.comanda == 0 && !barra.pedido.contains(6)) {
                         clearInterval(tMesa6);
                         camarero.comanda = 6;
                         camarero.bebida = 0;
-                        console.log("Se ha tomado comanda a la mesa 6...");
+                        notaCamarero.innerHTML = camarero.comanda;
+                        notaCamarero.className = "pedido";
+                        //console.log("Se ha tomado comanda a la mesa 6...");
+                        mesa6.step = 4;
                         changeTable('mesa6', 4, 6);
                     } else if (camarero.bebida == 6 && camarero.comanda == 0) {
                         clearInterval(tMesa6);
@@ -494,9 +526,31 @@ document.onkeydown = function (evt) {
             } // end estado1[6]
 
             if (eventoSpace(barra)) {
-                if (camarero.bebida == 0 || camarero.comanda == 0) {
+                if (camarero.bebida == 0 && camarero.comanda != 0) {
+                    // ---------------------------------------
+                    console.log(camarero.comanda + " \n" + barra.pedido);
+                    // añade el pedido al array despues de 1 segundo
+                    //setTimeout(function () {
+                    barra.pedido.push(camarero.comanda);
+                    console.log("numero comanda: " + camarero.comanda + " \n" + barra.pedido);
+                    //}, 1000);
 
-                    //console.log("Camarero cerca de la barra...");
+                    // ---------------------------------------
+                    notaCamarero.innerHTML = "";
+                    notaCamarero.className = "none";
+                    camarero.comanda = 0;
+                    console.log("Camarero tiene comanda");
+                } else if (camarero.bebida != 0 && camarero.comanda != 0) {
+                    //console.log("Camarero tiene comanda y bebida a la vez... no es posible"); 
+                } else if (camarero.bebida != 0 && camarero.comanda == 0) {
+                    //console.log("Camarero tiene bebida.");
+                } else if (camarero.bebida == 0 && camarero.comanda == 0 && barra.pedido.length > 0) {
+                    //camarero.comanda = barra.pedido[0];
+                    camarero.bebida = barra.pedido[0];
+                    notaCamarero.innerHTML = camarero.bebida;
+                    notaCamarero.className = "bebida";
+                    barra.pedido.shift();
+                    console.log("Camarero cerca de la barra...");
                 }
             }
             //console.log("tecla SPACE");
@@ -623,6 +677,21 @@ function eventoSpace(obj) {
     } else {
         return true;
     }
+}
+
+/* ============================================ */
+//funcion para comprobar que el array barra.pedido no contenga el mismo pedido
+/*function include(arr, obj) {
+    return (arr.indexOf(obj) != -1);
+}*/
+Array.prototype.contains = function (obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
 }
 
 /* ============================================ */
@@ -798,13 +867,18 @@ function changeTable(mesa, value, value2) {
         break;
         /* --------------------------------------- */
     case 4:
+        parrafoMesa.innerHTML = "Esperando las bebidas...";
         table.className = "pending";
         numeroMesa.className = "green";
         break;
     case 5:
+        parrafoMesa.innerHTML = "Está esperando las bebidas...";
+        table.className = "pending";
         numeroMesa.className = "yellow";
         break;
     case 6:
+        parrafoMesa.innerHTML = "Lleva tiempo esperando las bebidas...";
+        table.className = "pending";
         numeroMesa.className = "red";
         break;
     case 7:
