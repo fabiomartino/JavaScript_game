@@ -1,406 +1,418 @@
-body {
-    background-color: #f1f1f1;
-}
-
-@font-face {
-    font-family: 'Cafe Nero M54';
-    font-style: normal;
-    font-weight: normal;
-    src: url('../font/Cafe Nero M54.ttf') format('truetype');
-}
-
-.titulo {
-    font-family: 'Cafe Nero M54';
-    font-weight: normal;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: #346e7c;
-    font-size: 4em;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-}
-
-.titulo {
-    text-align: center;
-}
-
-#container {
-    float: left;
-    position: relative;
-    width: 640px;
-    height: 500px;
-    margin-top: 15px;
-    margin-left: 10px;
-    background: url('../img/background.png');
-    border: solid 1px #000;
-    box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
-    overflow: hidden;
-}
-
-#hub {
-    float: left;
-    position: relative;
-    width: 300px;
-    height: 495px;
-    padding: 5px 5px 0px 5px;
-    margin-top: 15px;
-    margin-left: 10px;
-    border: solid 1px #000;
-    box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-#tiempo {
-    text-align: center;
-}
-
-#planta1 {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 36px;
-    height: 40px;
-    background: url('../img/planta1.png');
-}
-
-#planta2 {
-    position: absolute;
-    top: 0px;
-    left: 600px;
-    width: 36px;
-    height: 40px;
-    background: url('../img/planta1.png');
-}
-
-#planta3 {
-    position: absolute;
-    top: 455px;
-    left: 0px;
-    width: 36px;
-    height: 40px;
-    background: url('../img/planta1.png');
-}
-
-#planta4 {
-    position: absolute;
-    top: 455px;
-    left: 600px;
-    width: 36px;
-    height: 40px;
-    background: url('../img/planta1.png');
-}
-
-
-/* La cocina */
-
-.barra {
-    position: absolute;
-    top: 0px;
-    left: 262px;
-    width: 123px;
-    height: 37px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 40px;
-    background: url('../img/barra.png');
-    border: solid 1px silver;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    box-shadow: 0px 3px 5px 1px silver;
-}
-
-
-/* El camarero */
-
-#camarero {
-    position: absolute;
-    top: 228px;
-    left: 320px;
-    width: 25px;
-    height: 44px;
-    z-index: 1;
-    /* http://www.4shared.com/all-images/MCbAVhKU/Characters.html?&firstFileToShow=300 */
-    /* 136-Bartender01.png */
-    background: url('../img/char.png') no-repeat;
-}
-
-
-/* las 12 posicion/vistas del camarero */
-
-#camarero.front-right {
-    background-position: -68px -3px;
-}
-
-#camarero.front-stand {
-    background-position: -35px -3px;
-}
-
-#camarero.front-left {
-    background-position: -3px -3px;
-}
-
-#camarero.left-right {
-    background-position: -68px -50px;
-}
-
-#camarero.left-stand {
-    background-position: -35px -50px;
-}
-
-#camarero.left-left {
-    background-position: -3px -50px;
-}
-
-#camarero.right-right {
-    background-position: -68px -99px;
-}
-
-#camarero.right-stand {
-    background-position: -35px -99px;
-}
-
-#camarero.right-left {
-    background-position: -3px -99px;
-}
-
-#camarero.back-right {
-    background-position: -68px -147px;
-}
-
-#camarero.back-stand {
-    background-position: -35px -147px;
-}
-
-#camarero.back-left {
-    background-position: -3px -147px;
-}
-
-
-/* Mesas */
-
-#mesa1 {
-    position: absolute;
-    top: 130px;
-    left: 100px;
-}
-
-#mesa2 {
-    position: absolute;
-    top: 130px;
-    left: 285px;
-}
-
-#mesa3 {
-    position: absolute;
-    top: 130px;
-    left: 470px;
-}
-
-#mesa4 {
-    position: absolute;
-    top: 330px;
-    left: 100px;
-}
-
-#mesa5 {
-    position: absolute;
-    top: 330px;
-    left: 285px;
-}
-
-#mesa6 {
-    position: absolute;
-    top: 330px;
-    left: 470px;
-}
-
-.empty {
-    width: 80px;
-    height: 77px;
-    background-image: url(../img/empty.png);
-}
-
-.empty p {
-    font-size: 1.4em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.new {
-    width: 80px;
-    height: 77px;
-    background-image: url(../img/new.png);
-}
-
-.new p {
-    font-size: 1.4em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* <div id="mesaX" class="new"><p class="green">X</p> */
-
-.new p.green {
-    animation-duration: 1500ms;
-    animation-name: blink-green;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-green 1000ms infinite;
-}
-
-
-/* <div id="mesaX" class="new"><p class="yellow">X</p> */
-
-.new p.yellow {
-    animation-duration: 1500ms;
-    animation-name: blink-yellow;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-yellow 750ms infinite;
-}
-
-
-/* <div id="mesaX" class="new"><p class="red">X</p> */
-
-.new p.red {
-    animation-duration: 1500ms;
-    animation-name: blink-red;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-red 500ms infinite;
-}
-
-.pending {
-    width: 80px;
-    height: 77px;
-    background-image: url(../img/pending.png);
-}
-
-.pending p {
-    font-size: 1.4em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* <div id="mesaX" class="pending"><p class="green">X</p> */
-
-.pending p.green,
-span.green {
-    animation-duration: 1500ms;
-    animation-name: blink-green;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-green 1000ms infinite;
-}
-
-
-/* <div id="mesaX" class="pending"><p class="yellow">X</p> */
-
-.pending p.yellow,
-span.yellow {
-    animation-duration: 1500ms;
-    animation-name: blink-yellow;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-yellow 750ms infinite;
-}
-
-
-/* <div id="mesaX" class="pending"><p class="red">X</p> */
-
-.pending p.red,
-span.red {
-    animation-duration: 1500ms;
-    animation-name: blink-red;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-red 500ms infinite;
-}
-
-.served {
-    width: 80px;
-    height: 77px;
-    background-image: url(../img/served.png);
-}
-
-
-/* <div id="mesaX" class="served"><p>X</p> */
-
-.served p {
-    font-size: 1.4em;
-    font-weight: bold;
-    color: #67ff42;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation-duration: 1500ms;
-    animation-name: blink-green;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    -webkit-animation: blink-green 2000ms infinite;
-}
-
-
-/* -------- */
-
-@keyframes blink-green {
-    from {
-        color: white;
+    body {
+        background-color: #f1f1f1;
     }
-    to {
-        color: limegreen;
+    
+    @font-face {
+        font-family: 'Cafe Nero M54';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../font/Cafe Nero M54.ttf') format('truetype');
     }
-}
-
-@-webkit-keyframes blink-green {
-    from {
-        color: white;
+    
+    .titulo {
+        font-family: 'Cafe Nero M54';
+        font-weight: normal;
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #346e7c;
+        font-size: 4em;
+        text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     }
-    to {
-        color: limegreen;
+    
+    .titulo {
+        text-align: center;
     }
-}
-
-@keyframes blink-yellow {
-    from {
-        color: darkorange;
+    
+    #container {
+        float: left;
+        position: relative;
+        width: 640px;
+        height: 500px;
+        margin-top: 15px;
+        margin-left: 10px;
+        background: url('../img/background.png');
+        border: solid 1px #000;
+        box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
+        overflow: hidden;
     }
-    to {
-        color: yellow;
+    
+    #hub {
+        float: left;
+        position: relative;
+        width: 300px;
+        height: 495px;
+        padding: 5px 5px 0px 5px;
+        margin-top: 15px;
+        margin-left: 10px;
+        border: solid 1px #000;
+        box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.56);
+        border-radius: 5px;
+        overflow: hidden;
     }
-}
-
-@-webkit-keyframes blink-yellow {
-    from {
-        color: darkorange;
+    
+    #tiempo {
+        text-align: center;
     }
-    to {
-        color: yellow;
+    
+    #planta1 {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 36px;
+        height: 40px;
+        background: url('../img/planta1.png');
     }
-}
-
-@keyframes blink-red {
-    from {
-        color: white;
+    
+    #planta2 {
+        position: absolute;
+        top: 0px;
+        left: 600px;
+        width: 36px;
+        height: 40px;
+        background: url('../img/planta1.png');
     }
-    to {
-        color: red;
+    
+    #planta3 {
+        position: absolute;
+        top: 455px;
+        left: 0px;
+        width: 36px;
+        height: 40px;
+        background: url('../img/planta1.png');
     }
-}
-
-@-webkit-keyframes blink-red {
-    from {
-        color: white;
+    
+    #planta4 {
+        position: absolute;
+        top: 455px;
+        left: 600px;
+        width: 36px;
+        height: 40px;
+        background: url('../img/planta1.png');
     }
-    to {
-        color: red;
+    /* La cocina */
+    
+    .barra {
+        position: absolute;
+        top: 0px;
+        left: 262px;
+        width: 123px;
+        height: 37px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 40px;
+        background: url('../img/barra.png');
+        border: solid 1px silver;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        box-shadow: 0px 3px 5px 1px silver;
     }
-}
+    /* El camarero */
+    
+    #camarero {
+        position: absolute;
+        top: 228px;
+        left: 320px;
+        width: 25px;
+        height: 44px;
+        z-index: 1;
+        /* http://www.4shared.com/all-images/MCbAVhKU/Characters.html?&firstFileToShow=300 */
+        /* 136-Bartender01.png */
+        background: url('../img/char.png') no-repeat;
+    }
+    
+    #notaSteward {
+        border: 1px solid #000;
+        background-color: #eee;
+        text-align: center;
+        position: relative;
+        margin-top: -20px;
+        animation: push ease 5s alternate infinite;
+        animation-delay: 1.5s;
+    }
+    
+    @keyframes push {
+        0% {
+            left: 0;
+            top: 0;
+        }
+        50% {
+            left: 5px;
+            top: 5px;
+        }
+        100% {
+            top: -5px;
+            left: 5px;
+        }
+    }
+    /* las 12 posicion/vistas del camarero */
+    
+    #camarero.front-right {
+        background-position: -68px -3px;
+    }
+    
+    #camarero.front-stand {
+        background-position: -35px -3px;
+    }
+    
+    #camarero.front-left {
+        background-position: -3px -3px;
+    }
+    
+    #camarero.left-right {
+        background-position: -68px -50px;
+    }
+    
+    #camarero.left-stand {
+        background-position: -35px -50px;
+    }
+    
+    #camarero.left-left {
+        background-position: -3px -50px;
+    }
+    
+    #camarero.right-right {
+        background-position: -68px -99px;
+    }
+    
+    #camarero.right-stand {
+        background-position: -35px -99px;
+    }
+    
+    #camarero.right-left {
+        background-position: -3px -99px;
+    }
+    
+    #camarero.back-right {
+        background-position: -68px -147px;
+    }
+    
+    #camarero.back-stand {
+        background-position: -35px -147px;
+    }
+    
+    #camarero.back-left {
+        background-position: -3px -147px;
+    }
+    /* Mesas */
+    
+    #mesa1 {
+        position: absolute;
+        top: 130px;
+        left: 100px;
+        border: 1px solid transparent;
+        -webkit-transition: border 0.1s linear, box-shadow 0.1s linear;
+        -moz-transition: border 0.1s linear, box-shadow 0.1s linear;
+        transition: border 0.1s linear, box-shadow 0.1s linear;
+    }
+    
+    #mesa1.active {
+        border-color: blue;
+        -webkit-box-shadow: 0 0 5px blue;
+        -moz-box-shadow: 0 0 5px blue;
+        box-shadow: 0 0 5px blue;
+    }
+    
+    #mesa2 {
+        position: absolute;
+        top: 130px;
+        left: 285px;
+    }
+    
+    #mesa3 {
+        position: absolute;
+        top: 130px;
+        left: 470px;
+    }
+    
+    #mesa4 {
+        position: absolute;
+        top: 330px;
+        left: 100px;
+    }
+    
+    #mesa5 {
+        position: absolute;
+        top: 330px;
+        left: 285px;
+    }
+    
+    #mesa6 {
+        position: absolute;
+        top: 330px;
+        left: 470px;
+    }
+    
+    .empty {
+        width: 80px;
+        height: 77px;
+        background-image: url(../img/empty.png);
+    }
+    
+    .empty p {
+        font-size: 1.4em;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .new {
+        width: 80px;
+        height: 77px;
+        background-image: url(../img/new.png);
+    }
+    
+    .new p {
+        font-size: 1.4em;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    /* <div id="mesaX" class="new"><p class="green">X</p> */
+    
+    .new p.green {
+        animation-duration: 1500ms;
+        animation-name: blink-green;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-green 1000ms infinite;
+    }
+    /* <div id="mesaX" class="new"><p class="yellow">X</p> */
+    
+    .new p.yellow {
+        animation-duration: 1500ms;
+        animation-name: blink-yellow;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-yellow 750ms infinite;
+    }
+    /* <div id="mesaX" class="new"><p class="red">X</p> */
+    
+    .new p.red {
+        animation-duration: 1500ms;
+        animation-name: blink-red;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-red 500ms infinite;
+    }
+    
+    .pending {
+        width: 80px;
+        height: 77px;
+        background-image: url(../img/pending.png);
+    }
+    
+    .pending p {
+        font-size: 1.4em;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    /* <div id="mesaX" class="pending"><p class="green">X</p> */
+    
+    .pending p.green,
+    span.green {
+        animation-duration: 1500ms;
+        animation-name: blink-green;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-green 1000ms infinite;
+    }
+    /* <div id="mesaX" class="pending"><p class="yellow">X</p> */
+    
+    .pending p.yellow,
+    span.yellow {
+        animation-duration: 1500ms;
+        animation-name: blink-yellow;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-yellow 750ms infinite;
+    }
+    /* <div id="mesaX" class="pending"><p class="red">X</p> */
+    
+    .pending p.red,
+    span.red {
+        animation-duration: 1500ms;
+        animation-name: blink-red;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-red 500ms infinite;
+    }
+    
+    .served {
+        width: 80px;
+        height: 77px;
+        background-image: url(../img/served.png);
+    }
+    /* <div id="mesaX" class="served"><p>X</p> */
+    
+    .served p {
+        font-size: 1.4em;
+        font-weight: bold;
+        color: #67ff42;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation-duration: 1500ms;
+        animation-name: blink-green;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        -webkit-animation: blink-green 2000ms infinite;
+    }
+    /* -------- */
+    
+    @keyframes blink-green {
+        from {
+            color: white;
+        }
+        to {
+            color: limegreen;
+        }
+    }
+    
+    @-webkit-keyframes blink-green {
+        from {
+            color: white;
+        }
+        to {
+            color: limegreen;
+        }
+    }
+    
+    @keyframes blink-yellow {
+        from {
+            color: darkorange;
+        }
+        to {
+            color: yellow;
+        }
+    }
+    
+    @-webkit-keyframes blink-yellow {
+        from {
+            color: darkorange;
+        }
+        to {
+            color: yellow;
+        }
+    }
+    
+    @keyframes blink-red {
+        from {
+            color: white;
+        }
+        to {
+            color: red;
+        }
+    }
+    
+    @-webkit-keyframes blink-red {
+        from {
+            color: white;
+        }
+        to {
+            color: red;
+        }
+    }
