@@ -451,13 +451,22 @@ document.onkeydown = function (evt) {
                         changeTable('mesa2', 4, 2);
                     } else if (camarero.bebida == 2 && camarero.comanda == 0) {
                         //clearInterval(tMesa2);
-                        notaCamarero.innerHTML = "";
-                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        mesa2.step = 7;
-                        changeTable('mesa2', 7, 2);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         //console.log("Se ha servido la bebida a la mesa 2...");
+                        changeTable('mesa2', 7, 2);
+                        caja += mesa2.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[2] = 0;
+                            document.getElementById('mesa2').className = "empty";
+                            document.getElementById('mesa2').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa2').innerHTML = "...";
+                            document.getElementById('hMesa2').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[2]
@@ -474,13 +483,22 @@ document.onkeydown = function (evt) {
                         changeTable('mesa3', 4, 3);
                     } else if (camarero.bebida == 3 && camarero.comanda == 0) {
                         //clearInterval(tMesa3);
-                        notaCamarero.innerHTML = "";
-                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        mesa3.step = 7;
-                        changeTable('mesa3', 7, 3);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         //console.log("Se ha servido la bebida a la mesa 3...");
+                        changeTable('mesa3', 7, 3);
+                        caja += mesa3.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[3] = 0;
+                            document.getElementById('mesa3').className = "empty";
+                            document.getElementById('mesa3').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa3').innerHTML = "...";
+                            document.getElementById('hMesa3').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[3]
@@ -497,13 +515,22 @@ document.onkeydown = function (evt) {
                         changeTable('mesa4', 4, 4);
                     } else if (camarero.bebida == 4 && camarero.comanda == 0) {
                         //clearInterval(tMesa4);
-                        notaCamarero.innerHTML = "";
-                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        mesa4.step = 7;
-                        changeTable('mesa4', 7, 4);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         //console.log("Se ha servido la bebida a la mesa 4...");
+                        changeTable('mesa4', 7, 4);
+                        caja += mesa1.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[4] = 0;
+                            document.getElementById('mesa4').className = "empty";
+                            document.getElementById('mesa4').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa4').innerHTML = "...";
+                            document.getElementById('hMesa4').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[4]
@@ -520,13 +547,22 @@ document.onkeydown = function (evt) {
                         changeTable('mesa5', 4, 5);
                     } else if (camarero.bebida == 5 && camarero.comanda == 0) {
                         //clearInterval(tMesa5);
-                        notaCamarero.innerHTML = "";
-                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        mesa5.step = 7;
-                        changeTable('mesa5', 7, 5);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         //console.log("Se ha servido la bebida a la mesa 5...");
+                        changeTable('mesa5', 7, 5);
+                        caja += mesa5.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[5] = 0;
+                            document.getElementById('mesa5').className = "empty";
+                            document.getElementById('mesa5').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa5').innerHTML = "...";
+                            document.getElementById('hMesa5').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[5]
@@ -543,13 +579,22 @@ document.onkeydown = function (evt) {
                         changeTable('mesa6', 4, 6);
                     } else if (camarero.bebida == 6 && camarero.comanda == 0) {
                         //clearInterval(tMesa6);
-                        notaCamarero.innerHTML = "";
-                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        mesa6.step = 7;
-                        changeTable('mesa6', 7, 6);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         //console.log("Se ha servido la bebida a la mesa 6...");
+                        changeTable('mesa6', 7, 6);
+                        caja += mesa1.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[6] = 0;
+                            document.getElementById('mesa6').className = "empty";
+                            document.getElementById('mesa6').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa6').innerHTML = "...";
+                            document.getElementById('hMesa6').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[6]
