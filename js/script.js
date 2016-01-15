@@ -13,6 +13,7 @@ var charPxStep = 5;
 var charSpeed = 250; // velocidad del cambio sprites camarero
 var mW = 80;
 var mH = 77;
+var caja = 0;
 
 // constanes
 var MAX = 4;
@@ -417,11 +418,23 @@ document.onkeydown = function (evt) {
                         mesa1.step = 4;
                         changeTable('mesa1', 4, 1);
                     } else if (camarero.bebida == 1 && camarero.comanda == 0) {
-                        clearInterval(tMesa1);
+                        //clearInterval(tMesa1);
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        console.log("Se ha servido la bebida a la mesa 1...");
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
+                        //console.log("Se ha servido la bebida a la mesa 1...");
                         changeTable('mesa1', 7, 1);
+                        caja += mesa1.money;
+                        document.getElementById('caja').innerHTML = caja;
+                        setTimeout(function () {
+                            // se pone a cero el controlador estado1 
+                            estado1[1] = 0;
+                            document.getElementById('mesa1').className = "empty";
+                            document.getElementById('mesa1').getElementsByTagName('P')[0].className = "";
+                            document.getElementById('hMesa1').innerHTML = "...";
+                            document.getElementById('hMesa1').className = "";
+                        }, 2000);
                     }
                 }
             } // end estado1[1]
@@ -433,7 +446,7 @@ document.onkeydown = function (evt) {
                         camarero.bebida = 0;
                         notaCamarero.innerHTML = camarero.comanda;
                         notaCamarero.className = "pedido";
-                        console.log("Se ha tomado comanda a la mesa 2...");
+                        //console.log("Se ha tomado comanda a la mesa 2...");
                         mesa2.step = 4;
                         changeTable('mesa2', 4, 2);
                     } else if (camarero.bebida == 2 && camarero.comanda == 0) {
@@ -444,7 +457,7 @@ document.onkeydown = function (evt) {
                         camarero.comanda = 0;
                         mesa2.step = 7;
                         changeTable('mesa2', 7, 2);
-                        console.log("Se ha servido la bebida a la mesa 2...");
+                        //console.log("Se ha servido la bebida a la mesa 2...");
                     }
                 }
             } // end estado1[2]
@@ -460,10 +473,14 @@ document.onkeydown = function (evt) {
                         mesa3.step = 4;
                         changeTable('mesa3', 4, 3);
                     } else if (camarero.bebida == 3 && camarero.comanda == 0) {
-                        clearInterval(tMesa3);
+                        //clearInterval(tMesa3);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        console.log("Se ha servido la bebida a la mesa 3...");
+                        mesa3.step = 7;
+                        changeTable('mesa3', 7, 3);
+                        //console.log("Se ha servido la bebida a la mesa 3...");
                     }
                 }
             } // end estado1[3]
@@ -479,10 +496,14 @@ document.onkeydown = function (evt) {
                         mesa4.step = 4;
                         changeTable('mesa4', 4, 4);
                     } else if (camarero.bebida == 4 && camarero.comanda == 0) {
-                        clearInterval(tMesa4);
+                        //clearInterval(tMesa4);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        console.log("Se ha servido la bebida a la mesa 4...");
+                        mesa4.step = 7;
+                        changeTable('mesa4', 7, 4);
+                        //console.log("Se ha servido la bebida a la mesa 4...");
                     }
                 }
             } // end estado1[4]
@@ -498,10 +519,14 @@ document.onkeydown = function (evt) {
                         mesa5.step = 4;
                         changeTable('mesa5', 4, 5);
                     } else if (camarero.bebida == 5 && camarero.comanda == 0) {
-                        clearInterval(tMesa5);
+                        //clearInterval(tMesa5);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        console.log("Se ha servido la bebida a la mesa 5...");
+                        mesa5.step = 7;
+                        changeTable('mesa5', 7, 5);
+                        //console.log("Se ha servido la bebida a la mesa 5...");
                     }
                 }
             } // end estado1[5]
@@ -517,24 +542,29 @@ document.onkeydown = function (evt) {
                         mesa6.step = 4;
                         changeTable('mesa6', 4, 6);
                     } else if (camarero.bebida == 6 && camarero.comanda == 0) {
-                        clearInterval(tMesa6);
+                        //clearInterval(tMesa6);
+                        notaCamarero.innerHTML = "";
+                        notaCamarero.className = "none";
                         camarero.bebida = 0;
                         camarero.comanda = 0;
-                        console.log("Se ha servido la bebida a la mesa 6...");
+                        mesa6.step = 7;
+                        changeTable('mesa6', 7, 6);
+                        //console.log("Se ha servido la bebida a la mesa 6...");
                     }
                 }
             } // end estado1[6]
 
             if (eventoSpace(barra)) {
-                if (camarero.bebida == 0 && camarero.comanda != 0) {
-                    // ---------------------------------------
-                    console.log(camarero.comanda + " \n" + barra.pedido);
-                    // añade el pedido al array despues de 1 segundo
-                    //setTimeout(function () {
-                    barra.pedido.push(camarero.comanda);
-                    console.log("numero comanda: " + camarero.comanda + " \n" + barra.pedido);
-                    //}, 1000);
 
+                if (camarero.bebida == 0 && camarero.comanda != 0) {
+                    var orden = document.getElementById('numBarra' + camarero.comanda);
+                    console.log(orden);
+                    // ---------------------------------------
+
+                    // añade el pedido al array
+                    barra.pedido.push(camarero.comanda);
+                    //console.log("numero comanda: " + camarero.comanda + " \n" + barra.pedido);
+                    orden.className = "listo";
                     // ---------------------------------------
                     notaCamarero.innerHTML = "";
                     notaCamarero.className = "none";
@@ -545,12 +575,14 @@ document.onkeydown = function (evt) {
                 } else if (camarero.bebida != 0 && camarero.comanda == 0) {
                     //console.log("Camarero tiene bebida.");
                 } else if (camarero.bebida == 0 && camarero.comanda == 0 && barra.pedido.length > 0) {
+                    var orden = document.getElementById('numBarra' + barra.pedido[0]);
                     //camarero.comanda = barra.pedido[0];
                     camarero.bebida = barra.pedido[0];
+                    orden.className = "esconde";
+                    barra.pedido.shift();
                     notaCamarero.innerHTML = camarero.bebida;
                     notaCamarero.className = "bebida";
-                    barra.pedido.shift();
-                    console.log("Camarero cerca de la barra...");
+                    //console.log("Camarero cerca de la barra...");
                 }
             }
             //console.log("tecla SPACE");
