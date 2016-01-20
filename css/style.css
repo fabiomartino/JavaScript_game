@@ -37,7 +37,7 @@ body {
 }
 
 #hub {
-    display: none;
+    /*display: none;*/
     float: left;
     position: relative;
     width: 300px;
@@ -179,7 +179,9 @@ div#numeroBarra div.esconde {
     text-align: center;
     line-height: 18px;
     box-shadow: 0 0 1px #333;
+    -webkit-animation: push ease 5s alternate infinite;
     animation: push ease 5s alternate infinite;
+    -webkit-animation-delay: 1.5s;
     animation-delay: 1.5s;
 }
 
@@ -259,14 +261,11 @@ div#numeroBarra div.esconde {
     left: 100px;
     border: 1px solid transparent;
     -webkit-transition: border 0.1s linear, box-shadow 0.1s linear;
-    -moz-transition: border 0.1s linear, box-shadow 0.1s linear;
     transition: border 0.1s linear, box-shadow 0.1s linear;
 }
 
 #mesa1.active {
     border-color: blue;
-    -webkit-box-shadow: 0 0 5px blue;
-    -moz-box-shadow: 0 0 5px blue;
     box-shadow: 0 0 5px blue;
 }
 
@@ -309,8 +308,17 @@ div#numeroBarra div.esconde {
 .empty p {
     font-size: 1.4em;
     font-weight: bold;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -323,8 +331,17 @@ div#numeroBarra div.esconde {
 .new p {
     font-size: 1.4em;
     font-weight: bold;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -332,9 +349,13 @@ div#numeroBarra div.esconde {
 /* <div id="mesaX" class="new"><p class="green">X</p> */
 
 .new p.green {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-green;
     animation-name: blink-green;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-green 1000ms infinite;
 }
@@ -343,9 +364,13 @@ div#numeroBarra div.esconde {
 /* <div id="mesaX" class="new"><p class="yellow">X</p> */
 
 .new p.yellow {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-yellow;
     animation-name: blink-yellow;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-yellow 750ms infinite;
 }
@@ -354,9 +379,13 @@ div#numeroBarra div.esconde {
 /* <div id="mesaX" class="new"><p class="red">X</p> */
 
 .new p.red {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-red;
     animation-name: blink-red;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-red 500ms infinite;
 }
@@ -370,8 +399,17 @@ div#numeroBarra div.esconde {
 .pending p {
     font-size: 1.4em;
     font-weight: bold;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
 }
 
@@ -380,9 +418,13 @@ div#numeroBarra div.esconde {
 
 .pending p.green,
 span.green {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-green;
     animation-name: blink-green;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-green 1000ms infinite;
 }
@@ -392,9 +434,13 @@ span.green {
 
 .pending p.yellow,
 span.yellow {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-yellow;
     animation-name: blink-yellow;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-yellow 750ms infinite;
 }
@@ -404,9 +450,13 @@ span.yellow {
 
 .pending p.red,
 span.red {
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-red;
     animation-name: blink-red;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-red 500ms infinite;
 }
@@ -424,12 +474,25 @@ span.red {
     font-size: 1.4em;
     font-weight: bold;
     color: #67ff42;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-animation-duration: 1500ms;
     animation-duration: 1500ms;
+    -webkit-animation-name: blink-green;
     animation-name: blink-green;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
     animation-direction: alternate;
     -webkit-animation: blink-green 2000ms infinite;
 }
